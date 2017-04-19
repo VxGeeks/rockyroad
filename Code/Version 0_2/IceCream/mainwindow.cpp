@@ -17,13 +17,13 @@ extern "C" {
 #include "IC.h"
 #include "IC_Init.h"
 #include "Display_Mode.h"
+#include "BMX_support.h"
 }
 
 // Bosch Sensor Specific Includes
 #include "bma2x2.h"
 #include "bmm050.h"
 #include "bmg160.h"
-
 
 
 //Private
@@ -67,46 +67,48 @@ MainWindow::~MainWindow()
 
 void MainWindow::update()
 {
-    // Update Joystick Status
-    ui->label_JoyStick->setText(JoyStick_Status);
+    short int gyr_raw[3];
+    double gyr_scaled[3];
+    short int acc_raw[3];
+    double acc_scaled[3];
+    short int mag_raw[3];
+    double mag_scaled[3];
+    int i;
 
-    // Pull IMU Data
+    ui->label_JoyStick->setText(JoyStick_Status);
+    //get accel, filter
+    readAccelData(acc_raw);
+
+    for(i=0; i < 3; i++)
+    {
+        acc_scaled[i]=((double)acc_raw[i]) /16384.0; //+ accelBias[i];
+    }
+    ui->label_accX->setText(QString::number(acc_scaled[0],'f',2));
+    ui->label_accY->setText(QString::number(acc_scaled[1],'f',2));
+    ui->label_accZ->setText(QString::number(acc_scaled[2],'f',2));
 
     //Gyro
-    signed int gyrX = wiringPiI2CReadReg16 (i2cH_BMG, BMG160_RATE_X_LSB_ADDR);
-    ui->label_gyrX->setText(QString::number(gyrX));
+    readGyroData(gyr_raw);
 
-    signed int gyrY = wiringPiI2CReadReg16 (i2cH_BMG, BMG160_RATE_Y_LSB_ADDR);
-    ui->label_gyrY->setText(QString::number(gyrY));
+    for(i=0; i < 3; i++)
+    {
+        gyr_scaled[i]=((double)gyr_raw[i]) /16384.0;
+    }
 
-    signed int gyrZ = wiringPiI2CReadReg16 (i2cH_BMG, BMG160_RATE_Z_LSB_ADDR);
-    ui->label_gyrZ->setText(QString::number(gyrZ));
+    ui->label_gyrX->setText(QString::number(gyr_scaled[0],'f',2));
+    ui->label_gyrY->setText(QString::number(gyr_scaled[1],'f',2));
+    ui->label_gyrZ->setText(QString::number(gyr_scaled[2],'f',2));
 
+    readMagData(mag_raw);
 
-    //Accelerometer
-    signed int accX = wiringPiI2CReadReg16 (i2cH_BMA, BMA2x2_X_AXIS_LSB_ADDR);
-    ui->label_accX->setText(QString::number(accX));
+    for(i=0; i < 3; i++)
+    {
+        mag_scaled[i]=((double)mag_raw[i]);
+    }
 
-    signed int accY = wiringPiI2CReadReg16 (i2cH_BMA, BMA2x2_Y_AXIS_LSB_ADDR);
-    ui->label_accY->setText(QString::number(accY));
-
-    signed int accZ = wiringPiI2CReadReg16 (i2cH_BMA, BMA2x2_Z_AXIS_LSB_ADDR);
-    ui->label_accZ->setText(QString::number(accZ));
-
-    /*
-    //Magnotometer
-    signed int magX = wiringPiI2CReadReg16 (i2cH_BMM, BMM050_DATA_X_LSB);
-    ui->label_accX->setText(QString::number(magX));
-
-    signed int magY = wiringPiI2CReadReg16 (i2cH_BMM, BMM050_DATA_Y_LSB);
-    ui->label_accY->setText(QString::number(magY));
-
-    signed int magZ = wiringPiI2CReadReg16 (i2cH_BMM, BMM050_DATA_Z_LSB);
-    ui->label_accZ->setText(QString::number(magZ));
-
-    signed int magR = wiringPiI2CReadReg16 (i2cH_BMM, BMM050_DATA_R_LSB);
-    ui->label_accZ->setText(QString::number(magR));
-    */
+    ui->label_magX->setText(QString::number(mag_scaled[0],'f',2));
+    ui->label_magY->setText(QString::number(mag_scaled[1],'f',2));
+    ui->label_magZ->setText(QString::number(mag_scaled[2],'f',2));
 
 }
 
@@ -289,7 +291,6 @@ int MainWindow::initIceCreamHat()
 
     wiringPiSetup();
 
-
     // Check if the Bosch BMX055 Sensor is present
 
     ui->label_Status->setText("Trying to connect...");
@@ -318,6 +319,15 @@ int MainWindow::initIceCreamHat()
 
         ui->label_Status->setText(msgRec);
 
+        // start with all sensors in default mode with all registers reset
+        wiringPiI2CWriteReg8(i2cH_BMA,BMA2x2_RST_ADDR,0xB6);
+
+        // Configure accelerometer
+        wiringPiI2CWriteReg8 (i2cH_BMA, BMA2x2_RANGE_SELECT_ADDR, 0x03 & 0x0F); // Set accelerometer full range
+        wiringPiI2CWriteReg8 (i2cH_BMA, BMA2x2_BW_SELECT_ADDR, 0x09 & 0x0F);     // Set accelerometer bandwidth
+        wiringPiI2CWriteReg8 (i2cH_BMA, BMA2x2_DATA_CTRL_ADDR, 0x00);              // Use filtered data
+        fastcompaccelBMX055(accelBias);
+
     }
 
     if((i2cH_BMG = wiringPiI2CSetup(BMG160_I2C_ADDR1)) < 0 )
@@ -342,6 +352,10 @@ int MainWindow::initIceCreamHat()
 
         ui->label_Status->setText(msgRec);
 
+        // Configure Gyro
+        wiringPiI2CWriteReg8 (i2cH_BMG, BMG160_RANGE_ADDR, 4);  // set GYRO FS range
+        wiringPiI2CWriteReg8 (i2cH_BMG, BMG160_BW_ADDR, 4);
+
     }
 
     if((i2cH_BMM = wiringPiI2CSetup(BMM050_I2C_ADDRESS)) < 0 )
@@ -365,6 +379,16 @@ int MainWindow::initIceCreamHat()
         msgRec = "Rocky Road connected! " + msgRec;
 
         ui->label_Status->setText(msgRec);
+
+        //configure Mag
+        //writeByte(BMX055_MAG_ADDRESS, BMX055_MAG_PWR_CNTL1, 0x82);  // Softreset magnetometer, ends up in sleep mode
+        wiringPiI2CWriteReg8(i2cH_BMM, BMM050_POWER_CONTROL, 0x82);
+        delay(100);
+        wiringPiI2CWriteReg8(i2cH_BMM, BMM050_POWER_CONTROL, 0x01);
+        delay(100);
+        wiringPiI2CWriteReg8(i2cH_BMM, BMM050_CONTROL,BMM050_DATA_RATE_08HZ <<3);
+
+        trimBMM050();
 
     }
 
@@ -484,7 +508,7 @@ void MainWindow::JoySELECT_INT()
 
     JoyStick_Status = "SELECT";
 
-    Image_Show();
+    //Image_Show();
 
 }
 

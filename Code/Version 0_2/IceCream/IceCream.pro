@@ -31,7 +31,8 @@ SOURCES += main.cpp\
     Display_Mode.c \
     IC_Init.c \
     Delay.c \
-    bmg160.c
+    bmg160.c \
+    BMX_support.c
 
 HEADERS  += mainwindow.h \
     bma2x2.h \
@@ -41,7 +42,8 @@ HEADERS  += mainwindow.h \
     IC.h \
     IC_Init.h \
     Photo_Show.h \
-    bmg160.h
+    bmg160.h \
+    BMX_support.h
 
 FORMS    += mainwindow.ui
 

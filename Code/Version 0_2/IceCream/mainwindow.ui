@@ -157,7 +157,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>140</y>
+      <y>120</y>
       <width>661</width>
       <height>31</height>
      </rect>
@@ -293,72 +293,87 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>260</y>
+      <y>240</y>
       <width>68</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_gyrX">
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>220</y>
+      <y>200</y>
       <width>68</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_gyrZ">
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>300</y>
+      <y>280</y>
       <width>68</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_accY">
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>400</y>
+      <y>380</y>
       <width>68</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_accX">
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>360</y>
+      <y>340</y>
       <width>68</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_accZ">
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>440</y>
+      <y>420</y>
       <width>68</width>
       <height>21</height>
      </rect>
@@ -366,12 +381,15 @@
     <property name="text">
      <string>TextLabel</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
       <x>600</x>
-      <y>220</y>
+      <y>200</y>
       <width>31</width>
       <height>21</height>
      </rect>
@@ -384,7 +402,7 @@
     <property name="geometry">
      <rect>
       <x>600</x>
-      <y>260</y>
+      <y>240</y>
       <width>31</width>
       <height>21</height>
      </rect>
@@ -397,7 +415,7 @@
     <property name="geometry">
      <rect>
       <x>600</x>
-      <y>300</y>
+      <y>280</y>
       <width>31</width>
       <height>21</height>
      </rect>
@@ -410,7 +428,7 @@
     <property name="geometry">
      <rect>
       <x>600</x>
-      <y>360</y>
+      <y>340</y>
       <width>31</width>
       <height>21</height>
      </rect>
@@ -423,7 +441,7 @@
     <property name="geometry">
      <rect>
       <x>600</x>
-      <y>400</y>
+      <y>380</y>
       <width>31</width>
       <height>21</height>
      </rect>
@@ -436,7 +454,7 @@
     <property name="geometry">
      <rect>
       <x>600</x>
-      <y>440</y>
+      <y>420</y>
       <width>31</width>
       <height>21</height>
      </rect>
@@ -449,7 +467,7 @@
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>200</y>
+      <y>180</y>
       <width>161</width>
       <height>20</height>
      </rect>
@@ -462,7 +480,7 @@
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>210</y>
+      <y>190</y>
       <width>20</width>
       <height>121</height>
      </rect>
@@ -475,7 +493,7 @@
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>320</y>
+      <y>300</y>
       <width>161</width>
       <height>20</height>
      </rect>
@@ -488,7 +506,7 @@
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>210</y>
+      <y>190</y>
       <width>20</width>
       <height>121</height>
      </rect>
@@ -501,7 +519,7 @@
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>350</y>
+      <y>330</y>
       <width>20</width>
       <height>121</height>
      </rect>
@@ -514,7 +532,7 @@
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>340</y>
+      <y>320</y>
       <width>161</width>
       <height>20</height>
      </rect>
@@ -527,7 +545,7 @@
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>350</y>
+      <y>330</y>
       <width>20</width>
       <height>121</height>
      </rect>
@@ -540,7 +558,7 @@
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>460</y>
+      <y>440</y>
       <width>161</width>
       <height>20</height>
      </rect>
@@ -552,14 +570,14 @@
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>460</x>
       <y>210</y>
-      <width>68</width>
+      <width>91</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Gyro</string>
+     <string>Gyro (deg/s)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_11">
@@ -572,7 +590,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Acc</string>
+     <string>Acc (G)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_12">
@@ -589,6 +607,158 @@
     </property>
     <property name="wordWrap">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_magZ">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>550</y>
+      <width>68</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="Line" name="line_9">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>450</y>
+      <width>161</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_10">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>460</y>
+      <width>20</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_magY">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>510</y>
+      <width>68</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>470</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>X</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>460</y>
+      <width>68</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Mag (uT)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>550</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Z</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line_12">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>460</y>
+      <width>20</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_13">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>570</y>
+      <width>161</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_magX">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>470</y>
+      <width>68</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>510</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Y</string>
     </property>
    </widget>
    <zorder>pushButton_LoadImage</zorder>
@@ -624,6 +794,17 @@
    <zorder>label_10</zorder>
    <zorder>label_11</zorder>
    <zorder>label_12</zorder>
+   <zorder>label_magZ</zorder>
+   <zorder>line_9</zorder>
+   <zorder>line_10</zorder>
+   <zorder>label_magY</zorder>
+   <zorder>label_13</zorder>
+   <zorder>label_14</zorder>
+   <zorder>label_15</zorder>
+   <zorder>line_12</zorder>
+   <zorder>line_13</zorder>
+   <zorder>label_magX</zorder>
+   <zorder>label_16</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
