@@ -25,6 +25,8 @@ private slots:
 
     void update();
 
+    void on_Brightness_valueChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
 

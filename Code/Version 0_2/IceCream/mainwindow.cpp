@@ -514,3 +514,9 @@ void MainWindow::JoySELECT_INT()
 
 
 
+
+void MainWindow::on_Brightness_valueChanged(int Brightness)
+{
+    Write_Command(0x81);     //contrast control
+    Write_Command((char)Brightness);
+}

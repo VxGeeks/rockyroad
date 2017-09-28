@@ -25,8 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    supportfunctions.cpp \
-    bma2x2.c \
+        bma2x2.c \
     bmm050.c \
     Display_Mode.c \
     IC_Init.c \

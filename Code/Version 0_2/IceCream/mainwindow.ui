@@ -761,6 +761,38 @@
      <string>Y</string>
     </property>
    </widget>
+   <widget class="QSpinBox" name="Brightness">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>520</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>0-254</string>
+    </property>
+    <property name="maximum">
+     <number>254</number>
+    </property>
+    <property name="value">
+     <number>127</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_17">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>490</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Brightness</string>
+    </property>
+   </widget>
    <zorder>pushButton_LoadImage</zorder>
    <zorder>label_Filename</zorder>
    <zorder>label_Status</zorder>
@@ -805,6 +837,8 @@
    <zorder>line_13</zorder>
    <zorder>label_magX</zorder>
    <zorder>label_16</zorder>
+   <zorder>Brightness</zorder>
+   <zorder>label_17</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
